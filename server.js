@@ -7,6 +7,10 @@ const respond = require('koa-respond');
 const router = new Router();
 const app = new Koa();
 
+
+// DB
+
+
 // MiddleWares
 
 app.use(bodyParser());
@@ -18,7 +22,7 @@ app.use(respond());
 // Routes
 
 router.get('/', (ctx, next) => {
-  ctx.ok({ message: 'Welcome to bezkoder application.' });
+  ctx.ok({ message: 'Welcome to TODOS APP no save ;)' });
 });
 
 
@@ -32,3 +36,5 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+
+require('./db');

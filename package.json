@@ -27,6 +27,7 @@
     "koa-jwt": "^3.6.0",
     "koa-respond": "^2.1.0",
     "koa-router": "^8.0.8",
+    "mongodb": "^3.5.7",
     "mongoose": "^5.9.14"
   },
   "devDependencies": {
