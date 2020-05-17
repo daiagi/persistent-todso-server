@@ -1,10 +1,17 @@
 /* eslint-disable no-shadow */
 const Mongoose = require('mongoose');
+
 const {
-  user, password, cluster, database,
-} = require('./config/db.config');
+  user, password, cluster, dbName,
+} = require('./config/config.dev.js').database;
+
+
 const db = require('./models');
 
+
+const uri = `mongodb+srv://${user}:${encodeURI(password)}@${cluster}.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+
+console.log(uri);
 const Role = db.role;
 
 function initial() {
@@ -44,8 +51,7 @@ function initial() {
 }
 
 
-const uri = `mongodb+srv://${user}:${encodeURI(password)}@${cluster}.mongodb.net/${database}?retryWrites=true&w=majority`;
-const DBConnection = Mongoose.connect(uri, {
+module.exports = () => Mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {

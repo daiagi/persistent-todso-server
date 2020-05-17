@@ -1,33 +1,29 @@
-const Koa = require('koa');
-const bodyParser = require('koa-bodyparser');
-const cors = require('koa-cors');
-const Router = require('koa-router');
-const respond = require('koa-respond');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const connectToAtlasDb = require('./db');
 
-const router = new Router();
-const app = new Koa();
-
-
-// DB
+const app = express();
 
 
 // MiddleWares
 
-app.use(bodyParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
   origin: 'http://localhost:8081',
 }));
-app.use(respond());
 
 // Routes
 
-router.get('/', (ctx, next) => {
-  ctx.ok({ message: 'Welcome to TODOS APP no save ;)' });
+require('./routes/auth.routes')(app);
+require('./routes/user.routes')(app);
+
+app.get('/', (req, res, next) => {
+  res.json({ message: 'Welcome to TOOS APP no save ;)' });
 });
 
 
-app.use(router.routes())
-  .use(router.allowedMethods());
 
 
 // Listen
@@ -37,4 +33,6 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-require('./db');
+// db connection
+
+connectToAtlasDb();
