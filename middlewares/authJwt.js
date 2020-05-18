@@ -14,7 +14,7 @@ const verifyToken = (req, res, next) => {
   }
 
 
-  jwt.verify(token, secret, (err, decoded) => {
+  jwt.verify(token, process.env.jwt_secret, (err, decoded) => {
     if (err) {
       return res.status(401).send({ message: 'Unauthorized!' });
     }
@@ -25,7 +25,7 @@ const verifyToken = (req, res, next) => {
 
 
 const isRole = (Role) => (req, res, next) => {
-  User.findById(req, res.request.userId).exec((err, user) => {
+  User.findById(req.userId).exec((err, user) => {
     if (err) {
       res.status(500).send({ message: err });
       return;

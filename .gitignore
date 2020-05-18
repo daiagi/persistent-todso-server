@@ -106,3 +106,6 @@ dist
 #env config
 
 config/db.config.js
+config/nodemon.json
+config/config.dev.js
+.vscode/launch.json

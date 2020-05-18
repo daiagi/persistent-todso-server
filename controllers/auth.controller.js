@@ -23,7 +23,7 @@ exports.signup = async (req, res, next) => {
     })
       .catch((e) => res.status(500).send({ message: e }))
       .then((roles) => {
-        user.rols = roles.map((role) => role._id);
+        user.roles = roles.map((role) => role._id);
         user.save()
           .then(() => res.status(200).send({ message: 'User was registered successfully!' }))
           .catch((e) => res.status(500).send({ message: e }));
@@ -34,7 +34,7 @@ exports.signup = async (req, res, next) => {
     }).exec()
       .catch((e) => res.status(500).send({ message: e }))
       .then((roles) => {
-        user.rols = roles.map((role) => role._id);
+        user.roles = roles.map((role) => role._id);
         user.save()
           .then(() => res.status(200).send({ message: 'User was registered successfully!' }))
           .catch((e) => res.status(500).send({ message: e }));
@@ -43,7 +43,6 @@ exports.signup = async (req, res, next) => {
 };
 
 exports.signin = (req, res, next) => {
-  console.log('req.body', req.body);
   User.findOne({
     username: req.body.username,
   }).populate('roles', '-__v')
@@ -56,7 +55,6 @@ exports.signin = (req, res, next) => {
         res.status(404).send({ message: 'User not found' });
         return;
       }
-      console.log('db user', user);
       const passwordIsValied = bcrypt.compareSync(
         req.body.password,
         user.password,
