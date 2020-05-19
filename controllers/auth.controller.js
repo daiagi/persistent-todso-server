@@ -6,7 +6,7 @@ const db = require('../models');
 const User = db.user;
 const Role = db.role;
 
-exports.signup = async (req, res, next) => {
+exports.signup = async (req, res) => {
   const requestBody = req.body;
   const user = new User({
     username: requestBody.username,
@@ -40,7 +40,7 @@ exports.signup = async (req, res, next) => {
   }
 };
 
-exports.signin = (req, res, next) => {
+exports.signin = (req, res) => {
   User.findOne({
     username: req.body.username,
   }).populate('roles', '-__v')
