@@ -46,9 +46,9 @@ const addTodo = async (req, res) => {
 
 const updateTodo = (req, res) => {
   const { todoId } = req.params;
+
   Todo.findByIdAndUpdate(todoId, {
-    title: req.body.title,
-    content: req.body.content,
+    ...req.body,
     updated: Date.now(),
 
   }, { new: true }).exec()

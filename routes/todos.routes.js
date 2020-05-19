@@ -27,7 +27,7 @@ module.exports = function todosRoutes(app) {
     (req, res) => res.status(405).send({ message: 'Cannot PUT without an id. use POST for creating a new Todo ' }));
 
   app.put('/api/todos/:todoId',
-    [authJwt.verifyToken, verifyTodos.verifyUpdateRequest, verifyTodos.verifyOwnershipOfTodo],
+    [authJwt.verifyToken, verifyTodos.sanitizeUpdateRequest, verifyTodos.verifyOwnershipOfTodo],
     updateTodo);
 
   // DELETE
