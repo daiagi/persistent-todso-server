@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 const db = require('../models');
 
 const { ROLES } = db;

@@ -28,5 +28,7 @@ module.exports = {
       "allowShortCircuit": true,
       "allowTernary": true,
     }],
+    "no-underscore-dangle": 0,
+    "no-shadow": 0
   },
 };

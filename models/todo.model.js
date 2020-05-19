@@ -4,7 +4,7 @@ const Todo = mongoose.model(
   'Todo',
   new mongoose.Schema({
     title: String,
-    text: String,
+    content: String,
     updated: Date,
     user:
     {
