@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   dbConnection().then(next);
 });
-app.get('/home')
+app.get('/home');
 
 routes(app);
 
