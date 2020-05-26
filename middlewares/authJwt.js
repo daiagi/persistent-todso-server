@@ -5,8 +5,14 @@ const User = db.user;
 const RoleModel = db.role;
 
 const verifyToken = (req, res, next) => {
-  const token = req.headers['x-access-token'];
-
+  let token;
+  if (req.headers.authorization) {
+    const parts = req.headers.authorization.split(' ');
+    if (parts.length === 2 && parts[0] === 'Bearer') {
+      // eslint-disable-next-line prefer-destructuring
+      token = parts[1];
+    }
+  }
   if (!token) {
     res.status(403).send({ message: 'No token provided!' });
     return;

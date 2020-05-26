@@ -1,0 +1,34 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Node start",
+      "program": "C:\\Users\\dalia\\projects\\persistent-todos\\server\\server.js",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "nodemon",
+      "runtimeExecutable": "nodemon",
+      "env": { "jwt_secret": "9ehmgxDL8j3zjdhk1mG$BA^U2@K$y1b0u4TWUDvoe3!lOMsnD8D@k^J"}, 
+      "program": "C:\\Users\\dalia\\projects\\persistent-todos\\server\\server.js",
+      "restart": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+
+  ]
+}

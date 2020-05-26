@@ -40,7 +40,7 @@ const addTodo = async (req, res) => {
         },
       }).exec()
         .catch((e) => res.status(500).send({ message: e }))
-        .then(() => res.status(201).send({ todoId: newTodo._id }));
+        .then(() => res.status(201).send({ newTodo }));
     });
 };
 
